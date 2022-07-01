@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prisma Defender Deployment</title>
+</head>
+<style>
+    li {
+        display: inline;
+        padding: 15px;
+    }
+    .box {
+        width: 800px;
+        margin: auto;
+    }
+</style>
+<body>
+<div style="text-align:center; padding-top:20px">
+    <li><p style="font-size:25px; font-family:Times New Roman; text-align:left; padding-left:30px"><a href="../Index.html" style="color:black; text-decoration:none">Prisma Defender Deployment</a></p></li>
+    <li><a href="../Links/Deployment Steps.html" style="color:black; font-size:20px; text-decoration:none">Deployment Steps</a></li>
+    <li><a href="../Links/Azure Login.html" style="color:black; font-size:20px; text-decoration:none">Azure Login</a></li>
+    <li><a href="../Links/YAML Download.html" style="color:black; font-size:20px; text-decoration:none">YAML Download</a></li>
+</div>
+<u><p style="text-align:center; padding-top:35px; font-size:50px">YAML Download</p></u>
+
+<div class="box" style="display:block; text-align:left; font-size:25px">
+    <p>Login to Prisma</p>
+    <p>On Prisma Compute section, make sure your user role is a Cloud Provisioning Admin.</p>
+    <p>Navigate to the Compute > Deploy > Defenders section</p>
+    <p>Deploy Defenders section select the Orchestrator deployment method</p>
+    <p>Download the YAML file</p>
+    <p>Use the following configurations listed below</p>
+    <img style="margin-left:auto; margin-right:auto; display:block" src="../Images/YAML Download 1.png">
+	<br>
+    <img style="margin-left:auto; margin-right:auto; display:block" src="../Images/YAML Download 2.png">
+    <p>_____________________________________________________________________</p>
+    <p>Navigate to where you downloaded the YAML file and open it</p>
+    <p>Find the part of the YAML named image</p>
+    <img style="margin-left:auto; margin-right:auto; display:block" src="../Images/YAML Image.png">
+    <p>On the YAML file (defender_22_01_882) is the version you will use later and the entire image is what you need to pull the Twistlock image. The version can vary.</p>
+	<br>
+	<p>_____________________________________________________________________</p>
+</div>
+
+</body>
+</html>

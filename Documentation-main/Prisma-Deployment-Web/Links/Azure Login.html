@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prisma Defender Deployment</title>
+</head>
+<style>
+    li {
+        display: inline;
+        padding: 15px;
+    }
+    .box {
+        width: 800px;
+        margin: auto;
+    }
+</style>
+<body>
+<div style="text-align:center; padding-top:20px">
+    <li><p style="font-size:25px; font-family:Times New Roman; text-align:left; padding-left:30px"><a href="../Index.html" style="color:black; text-decoration:none">Prisma Defender Deployment</a></p></li>
+    <li><a href="../Links/Deployment Steps.html" style="color:black; font-size:20px; text-decoration:none">Deployment Steps</a></li>
+    <li><a href="../Links/Azure Login.html" style="color:black; font-size:20px; text-decoration:none">Azure Login</a></li>
+    <li><a href="../Links/YAML Download.html" style="color:black; font-size:20px; text-decoration:none">YAML Download</a></li>
+</div>
+<u><p style="text-align:center; padding-top:35px; font-size:50px">Azure Login</p></u>
+
+<div class="box" style="display:block; text-align:left; font-size:25px">
+    <p>In order to login, you will need to open the Linux PowerShell terminal and run the following commands</p>
+    <p> - $ az login</p>
+    <p>If you receive this prompt follow it to gain access. “The following tenants require Multi-Factor Authentication (MFA). Use 'az login --tenant TENANT_ID' to explicitly login to a tenant. f6483a1fad89-41e7-a7a7-804ad19a8549 </p>
+    <p>Now pull the Image from Prisma using the image you acquired in the YAML file you just found, steps to do that can be found <a href="https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/install/twistlock_container_images">here</a></p>
+	<p> - $ sudo docker pull %Image%</p>
+	<p>Once done now you need to push it to the Azure Container Registry (ACR)</p>
+	<p>Now navigate to your Azure Portal and the Cluster under your Kubernetes service that you want to deploy the defender onto.</p>
+	<p>_____________________________________________________________________</p>
+	<p>Once done now you need to push it to the Azure Container Registry (ACR)</p>
+	<p>Now navigate to your Azure Portal and the Cluster under your Kubernetes service that you want to deploy the defender onto.</p>
+    <img style="margin-left:auto; margin-right:auto; display:block" src="../Images/ACR Login 1.png">
+    <p>Go to overview and click connect</p>
+    <p>A pane will pop out on the right side where it will display commands that you need to run</p>
+    <img style="margin-left:auto; margin-right:auto; display:block" src="../Images/ACR Login 2.png">
+	<p>Run only these commands</p>
+	<p>To check your cluster run ‘kubectl cluster-info’</p>
+	<p>Most likely an authentication error will arise</p>
+	<img style="margin-left:auto; margin-right:auto; display:block" src="../Images/Terminal.png">
+	<p>Follow the steps and enter the one-time code given</p>
+	<p>Cluster information should be returned once authenticated.</p>
+	<p>_____________________________________________________________________</p>
+	<p>Now that you are signed in you can push the image to ACR</p>
+	<p>Navigate to the azure portal and go to your container registry</p>
+	<p>Select the overview tab and on the top right locate the login server</p>
+	<img style="margin-left:auto; margin-right:auto; display:block" src="../Images/ACR Login 3">
+	<p>Run commands in this order</p>
+	<p> - $ curl -sk -D - https://app2.prismacloud.io/api/v1/_ping</p>
+	<p> - $ sudo docker image ls</p>
+	<p> - $ sudo docker tag ImageID LoginServer/Repository/ImageName:TagName</p>
+	<p> - $ docker login -u $USER -p $PASSWORD $LOGIN_SERVER</p>
+	<p> - $ docker push LoginServer/Repository/ImageName:TagName</p>
+	<p><b>INFORMATION FOR THE COMMANDS:</b></p>
+	<p>• Image ID is in the terminal after you run $ sudo docker image ls</p>
+	<p>• Login server is found in the previous steps (where you will push the image)</p>
+	<p>• Repository is 'twistlock'</p>
+	<p>• Image Name is 'defender'</p>
+	<p>• Tag Name is the version found in the YAML file in the previous steps (defender_22_01_882)</p>
+	<p>• The username and password will be from ACR > Repository Permissions > Tokens use the admin or push docker login command to get the image to the ACR</p>
+	<p>• Check services > repositories > twistlock/defender to see the image in your ACR</p>
+	<br>
+	<p>_____________________________________________________________________</p>
+</div>
+
+</body>
+</html>

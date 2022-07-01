@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prisma Defender Deployment</title>
+</head>
+<style>
+    li {
+        display: inline;
+        padding: 15px;
+    }
+    .box {
+        width: 800px;
+        margin: auto;
+    }
+</style>
+<body>
+<div style="text-align:center; padding-top:20px">
+    <li><p style="font-size:25px; font-family:Times New Roman; text-align:left; padding-left:30px"><a href="../Prisma Deployment Web/Index.html" style="color:black; text-decoration:none">Prisma Defender Deployment</a></p></li>
+    <li><a href="Links/Deployment Steps.html" style="color:black; font-size:20px; text-decoration:none">Deployment Steps</a></li>
+    <li><a href="Links/Azure Login.html" style="color:black; font-size:20px; text-decoration:none">Azure Login</a></li>
+    <li><a href="Links/YAML Download.html" style="color:black; font-size:20px; text-decoration:none">YAML Download</a></li>
+</div>
+<u><p style="text-align:center; padding-top:35px; font-size:50px">Order of Operations</p></u>
+
+<div class="box" style="display:block; text-align:left; font-size:25px">
+    <p>Now that it is in the ACR you need to redirect the image in the YAML file towards the ACR</p>
+    <img src="Images/ACR Pull.png" style="margin-left:auto; margin-right:auto; display:block">
+    <p>After finding the twistlock/defender Image the information after the docker pull is what you will need to replace the Image line with on the YAML file.</p>
+    <p>Save the YAML file on the home directory on you Linux machine</p>
+    <p>After you replace the twistlock image directory with the ACR image path you will pull and deploy it</p>
+    <p><b>Run these commands:</b></p>
+    <p> - $ kubectl create namespace twistlock</p>
+    <p> - $ kubectl create -f %file path% -n twistlock</p>
+    <p> - $ kubectl get -n twistlock po</p>
+    <p> - $ kubectl logs %podname% -n twistlock</p>
+    <p>%filepath% is where you have your YAML file (./daemonset.yaml)</p>
+    <p>%podname% is the name of one of your pods</p>
+    <p>If there are no logs upon first creation, then you have deployed it correctly and should find it on Prisma Compute</p>
+	<br>
+	<p>_____________________________________________________________________</p>
+</div>
+
+</body>
+</html>
